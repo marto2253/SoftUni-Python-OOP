@@ -34,5 +34,3 @@ class Guild:
 
         return result.strip()
 
-
-
