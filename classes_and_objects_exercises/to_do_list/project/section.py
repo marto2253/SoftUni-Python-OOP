@@ -1,3 +1,4 @@
+# from classes_and_objects_exercises.to_do_list.project.task import Task
 from .task import Task
 
 
@@ -10,31 +11,30 @@ class Section:
     def add_task(self, new_task: Task):
         if new_task not in self.tasks:
             self.tasks.append(new_task)
-            return f"Task {new_task.name} is added to the section"
+            return f"Task {new_task.details()} is added to the section"
         return f"Task is already in the section {self.name}"
 
     def complete_task(self, task_name: str):
-        if task_name not in self.tasks:
-            return f"Could not find task with the name {task_name}"
-        else:
-            for t in self.tasks:
-                if t.name == task_name:
-                    t.completed = True
-                    return f"Completed task {task_name}"
+        for t in self.tasks:
+            if t.name == task_name:
+                t.completed = True
+                return f"Completed task {task_name}"
+        return f"Could not find task with the name {task_name}"
 
     def clean_section(self):
         counter = 0
         for t in self.tasks:
             if t.completed:
+                counter += 1
                 del t
         return f"Cleared {counter} tasks."
 
     def view_section(self):
         result = ''
 
-        result += f'{self.name}:\n'
-        joined = "\n".join([i.details() for i in self.tasks])
-        result += f'{joined}'
+        result += f'Section {self.name}:\n'
+        for task in self.tasks:
+            result += f'{task.details()}'
 
         return result.strip()
 
