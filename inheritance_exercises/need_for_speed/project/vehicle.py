@@ -4,7 +4,7 @@ class Vehicle:
     fuel_consumption = 1.25
     DEFAULT_FUEL_CONSUMPTION = fuel_consumption
 
-    def __init__(self, fuel: float, horse_power: int, fuel_consumption=1.25):
+    def __init__(self, fuel: float, horse_power: int):
         self.fuel = fuel
         self.horse_power = horse_power
 
@@ -13,10 +13,3 @@ class Vehicle:
             self.fuel -= kilometers * self.fuel_consumption
 
 
-vehicle = Vehicle(50, 150)
-print(Vehicle.DEFAULT_FUEL_CONSUMPTION)
-# print(FamilyCar.DEFAULT_FUEL_CONSUMPTION)
-print(vehicle.fuel)
-print(vehicle.horse_power)
-print(vehicle.fuel_consumption)
-vehicle.drive(100)
